@@ -22,3 +22,15 @@ def greeting(request):
     context={'employee':employee_list}
     print(context)
     return render(request,'firstapp/index.html',context)
+##Employee template
+def employee_template(request,emp_id):
+    employees = Employee.objects.get(id=emp_id)
+    context = {
+        'employee':employees.name,
+        'age' : employees.age,
+        'email' : employees.email,
+        'joining_date' : employees.joining_date,
+        'salary' : employees.salary,
+        'is_employed' : employees.is_employed
+    }
+    return render(request,'firstapp/employee_template.html',context)
